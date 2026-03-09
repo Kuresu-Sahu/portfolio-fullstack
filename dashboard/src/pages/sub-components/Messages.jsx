@@ -11,7 +11,7 @@ const Messages = () => {
   const fetchMessages = async () => {
     try {
       const { data } = await axios.get(
-        "http://localhost:4000/api/v1/message/getall",
+        "https://portfolio-fullstack-nhdz.onrender.com/api/v1/message/getall",
         { withCredentials: true }
       );
       setMessages(data.messages);
@@ -26,11 +26,11 @@ const Messages = () => {
   const handleDelete = async (id) => {
     try {
       const { data } = await axios.delete(
-        `http://localhost:4000/api/v1/message/delete/${id}`,
+        `https://portfolio-fullstack-nhdz.onrender.com/api/v1/message/delete/${id}`,
         { withCredentials: true }
       );
       toast.success(data.message);
-      
+
       // Delete hone ke baad list update karo
       setMessages((prev) => prev.filter((msg) => msg._id !== id));
     } catch (error) {
@@ -82,8 +82,8 @@ const Messages = () => {
 
                 {/* Subject */}
                 <div className="mb-3">
-                    <span className="text-xs font-semibold text-gray-400 uppercase tracking-wider">Subject:</span>
-                    <p className="text-white font-medium">{element.subject}</p>
+                  <span className="text-xs font-semibold text-gray-400 uppercase tracking-wider">Subject:</span>
+                  <p className="text-white font-medium">{element.subject}</p>
                 </div>
 
                 {/* Message Body */}

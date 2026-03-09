@@ -21,7 +21,7 @@ const ManageProjects = () => {
   const fetchProjects = async () => {
     try {
       const { data } = await axios.get(
-        "http://localhost:4000/api/v1/project/getall",
+        "https://portfolio-fullstack-nhdz.onrender.com/api/v1/project/getall",
         { withCredentials: true }
       );
       setProjects(data.projects);
@@ -52,7 +52,7 @@ const ManageProjects = () => {
   const handleUpdateText = async () => {
     try {
       const { data } = await axios.put(
-        `http://localhost:4000/api/v1/project/update/${editingProject}`,
+        `https://portfolio-fullstack-nhdz.onrender.com/api/v1/project/update/${editingProject}`,
         {
           title,
           description,
@@ -79,7 +79,7 @@ const ManageProjects = () => {
   const handleDelete = async (id) => {
     try {
       const { data } = await axios.delete(
-        `http://localhost:4000/api/v1/project/delete/${id}`,
+        `https://portfolio-fullstack-nhdz.onrender.com/api/v1/project/delete/${id}`,
         { withCredentials: true }
       );
       toast.success(data.message);
@@ -98,7 +98,7 @@ const ManageProjects = () => {
     const toastId = toast.loading("Updating Image...");
     try {
       const { data } = await axios.put(
-        `http://localhost:4000/api/v1/project/update/${id}`,
+        `https://portfolio-fullstack-nhdz.onrender.com/api/v1/project/update/${id}`,
         formData,
         {
           withCredentials: true,
@@ -117,27 +117,27 @@ const ManageProjects = () => {
   return (
     <div className="flex flex-col gap-6 relative">
       <h2 className="text-2xl font-bold text-white mb-4">Manage Projects</h2>
-      
+
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {projects.map((element) => {
           return (
             <div key={element._id} className="bg-[#1a1a1a] p-4 rounded-xl border border-gray-800 shadow-lg group">
-              
+
               {/* Image Section */}
               <div className="relative h-48 rounded-lg overflow-hidden mb-4">
                 <img src={element.projectBanner.url} alt={element.title} className="w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex justify-center items-center">
-                    <label className="cursor-pointer bg-blue-600 text-white px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-blue-700 transition shadow-lg">
-                        <Upload size={18} /> Change Photo
-                        <input type="file" className="hidden" onChange={(e) => handleImageUpdate(element._id, e.target.files[0])} />
-                    </label>
+                  <label className="cursor-pointer bg-blue-600 text-white px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-blue-700 transition shadow-lg">
+                    <Upload size={18} /> Change Photo
+                    <input type="file" className="hidden" onChange={(e) => handleImageUpdate(element._id, e.target.files[0])} />
+                  </label>
                 </div>
               </div>
 
               {/* Text Info */}
               <h3 className="text-xl font-bold text-white mb-2">{element.title}</h3>
               <p className="text-gray-400 text-sm mb-4 line-clamp-2">{element.description}</p>
-              
+
               <div className="flex flex-wrap gap-2 mb-4">
                 <span className="text-xs bg-gray-800 text-blue-400 px-2 py-1 rounded border border-gray-700">{element.stack}</span>
                 <span className="text-xs bg-gray-800 text-green-400 px-2 py-1 rounded border border-gray-700">Deployed: {element.deployed}</span>
@@ -145,18 +145,18 @@ const ManageProjects = () => {
 
               {/* Action Buttons */}
               <div className="flex justify-between items-center pt-4 border-t border-gray-700">
-                <button 
-                    onClick={() => handleEditClick(element)} 
-                    className="flex items-center gap-2 bg-yellow-600/10 text-yellow-500 px-3 py-2 rounded-lg hover:bg-yellow-600 hover:text-white transition"
+                <button
+                  onClick={() => handleEditClick(element)}
+                  className="flex items-center gap-2 bg-yellow-600/10 text-yellow-500 px-3 py-2 rounded-lg hover:bg-yellow-600 hover:text-white transition"
                 >
-                    <PenSquare size={18} /> Edit
+                  <PenSquare size={18} /> Edit
                 </button>
-                
-                <button 
-                    onClick={() => handleDelete(element._id)} 
-                    className="flex items-center gap-2 bg-red-600/10 text-red-500 px-3 py-2 rounded-lg hover:bg-red-600 hover:text-white transition"
+
+                <button
+                  onClick={() => handleDelete(element._id)}
+                  className="flex items-center gap-2 bg-red-600/10 text-red-500 px-3 py-2 rounded-lg hover:bg-red-600 hover:text-white transition"
                 >
-                    <Trash2 size={18} /> Delete
+                  <Trash2 size={18} /> Delete
                 </button>
               </div>
 
@@ -168,65 +168,65 @@ const ManageProjects = () => {
       {/* ✏️ EDIT MODAL (Popup) */}
       {editingProject && (
         <div className="fixed inset-0 bg-black/80 backdrop-blur-sm flex justify-center items-center z-50 p-4">
-            <div className="bg-[#111] p-8 rounded-2xl border border-gray-800 w-full max-w-2xl shadow-2xl relative max-h-[90vh] overflow-y-auto">
-                
-                <div className="flex justify-between items-center mb-6">
-                    <h3 className="text-2xl font-bold text-white">Edit Project Details</h3>
-                    <button onClick={() => setEditingProject(null)} className="text-gray-400 hover:text-white">
-                        <X size={24} />
-                    </button>
-                </div>
+          <div className="bg-[#111] p-8 rounded-2xl border border-gray-800 w-full max-w-2xl shadow-2xl relative max-h-[90vh] overflow-y-auto">
 
-                <div className="flex flex-col gap-4">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div className="flex flex-col gap-2">
-                            <label className="text-sm text-gray-400">Project Title</label>
-                            <input type="text" value={title} onChange={(e)=>setTitle(e.target.value)} className="bg-[#222] p-3 rounded-lg text-white border border-gray-700 focus:border-blue-500 outline-none" />
-                        </div>
-                        <div className="flex flex-col gap-2">
-                            <label className="text-sm text-gray-400">Is Deployed?</label>
-                            <select value={deployed} onChange={(e)=>setDeployed(e.target.value)} className="bg-[#222] p-3 rounded-lg text-white border border-gray-700 focus:border-blue-500 outline-none">
-                                <option value="Yes">Yes</option>
-                                <option value="No">No</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div className="flex flex-col gap-2">
-                        <label className="text-sm text-gray-400">Description</label>
-                        <textarea value={description} onChange={(e)=>setDescription(e.target.value)} className="bg-[#222] p-3 rounded-lg text-white border border-gray-700 focus:border-blue-500 outline-none h-24" />
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div className="flex flex-col gap-2">
-                            <label className="text-sm text-gray-400">Github Link</label>
-                            <input type="text" value={gitRepoLink} onChange={(e)=>setGitRepoLink(e.target.value)} className="bg-[#222] p-3 rounded-lg text-white border border-gray-700 focus:border-blue-500 outline-none" />
-                        </div>
-                        <div className="flex flex-col gap-2">
-                            <label className="text-sm text-gray-400">Project Link</label>
-                            <input type="text" value={projectLink} onChange={(e)=>setProjectLink(e.target.value)} className="bg-[#222] p-3 rounded-lg text-white border border-gray-700 focus:border-blue-500 outline-none" />
-                        </div>
-                    </div>
-
-                    <div className="flex flex-col gap-2">
-                        <label className="text-sm text-gray-400">Technologies</label>
-                        <input type="text" value={technologies} onChange={(e)=>setTechnologies(e.target.value)} className="bg-[#222] p-3 rounded-lg text-white border border-gray-700 focus:border-blue-500 outline-none" />
-                    </div>
-                    
-                    <div className="flex flex-col gap-2">
-                        <label className="text-sm text-gray-400">Stack</label>
-                        <input type="text" value={stack} onChange={(e)=>setStack(e.target.value)} className="bg-[#222] p-3 rounded-lg text-white border border-gray-700 focus:border-blue-500 outline-none" />
-                    </div>
-
-                    <button 
-                        onClick={handleUpdateText} 
-                        className="mt-4 bg-green-600 text-white font-bold py-3 rounded-lg hover:bg-green-700 transition flex justify-center items-center gap-2"
-                    >
-                        <Check size={20} /> Save Changes
-                    </button>
-                </div>
-
+            <div className="flex justify-between items-center mb-6">
+              <h3 className="text-2xl font-bold text-white">Edit Project Details</h3>
+              <button onClick={() => setEditingProject(null)} className="text-gray-400 hover:text-white">
+                <X size={24} />
+              </button>
             </div>
+
+            <div className="flex flex-col gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="flex flex-col gap-2">
+                  <label className="text-sm text-gray-400">Project Title</label>
+                  <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} className="bg-[#222] p-3 rounded-lg text-white border border-gray-700 focus:border-blue-500 outline-none" />
+                </div>
+                <div className="flex flex-col gap-2">
+                  <label className="text-sm text-gray-400">Is Deployed?</label>
+                  <select value={deployed} onChange={(e) => setDeployed(e.target.value)} className="bg-[#222] p-3 rounded-lg text-white border border-gray-700 focus:border-blue-500 outline-none">
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                  </select>
+                </div>
+              </div>
+
+              <div className="flex flex-col gap-2">
+                <label className="text-sm text-gray-400">Description</label>
+                <textarea value={description} onChange={(e) => setDescription(e.target.value)} className="bg-[#222] p-3 rounded-lg text-white border border-gray-700 focus:border-blue-500 outline-none h-24" />
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="flex flex-col gap-2">
+                  <label className="text-sm text-gray-400">Github Link</label>
+                  <input type="text" value={gitRepoLink} onChange={(e) => setGitRepoLink(e.target.value)} className="bg-[#222] p-3 rounded-lg text-white border border-gray-700 focus:border-blue-500 outline-none" />
+                </div>
+                <div className="flex flex-col gap-2">
+                  <label className="text-sm text-gray-400">Project Link</label>
+                  <input type="text" value={projectLink} onChange={(e) => setProjectLink(e.target.value)} className="bg-[#222] p-3 rounded-lg text-white border border-gray-700 focus:border-blue-500 outline-none" />
+                </div>
+              </div>
+
+              <div className="flex flex-col gap-2">
+                <label className="text-sm text-gray-400">Technologies</label>
+                <input type="text" value={technologies} onChange={(e) => setTechnologies(e.target.value)} className="bg-[#222] p-3 rounded-lg text-white border border-gray-700 focus:border-blue-500 outline-none" />
+              </div>
+
+              <div className="flex flex-col gap-2">
+                <label className="text-sm text-gray-400">Stack</label>
+                <input type="text" value={stack} onChange={(e) => setStack(e.target.value)} className="bg-[#222] p-3 rounded-lg text-white border border-gray-700 focus:border-blue-500 outline-none" />
+              </div>
+
+              <button
+                onClick={handleUpdateText}
+                className="mt-4 bg-green-600 text-white font-bold py-3 rounded-lg hover:bg-green-700 transition flex justify-center items-center gap-2"
+              >
+                <Check size={20} /> Save Changes
+              </button>
+            </div>
+
+          </div>
         </div>
       )}
 

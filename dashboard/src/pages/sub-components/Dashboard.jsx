@@ -17,10 +17,10 @@ const Dashboard = () => {
 
         // 4 alag-alag calls taaki ek fail ho to baaki chalte rahein
         const [projRes, skillRes, msgRes, timeRes] = await Promise.all([
-          axios.get("http://localhost:4000/api/v1/project/getall"),
-          axios.get("http://localhost:4000/api/v1/softwareapplication/getall"),
-          axios.get("http://localhost:4000/api/v1/message/getall"),
-          axios.get("http://localhost:4000/api/v1/timeline/getall"),
+          axios.get("https://portfolio-fullstack-nhdz.onrender.com/api/v1/project/getall"),
+          axios.get("https://portfolio-fullstack-nhdz.onrender.com/api/v1/softwareapplication/getall"),
+          axios.get("https://portfolio-fullstack-nhdz.onrender.com/api/v1/message/getall"),
+          axios.get("https://portfolio-fullstack-nhdz.onrender.com/api/v1/timeline/getall"),
         ]);
 
         // ✅ CORRECT LOGIC: Pehle check karo array exist karta hai ya nahi
@@ -47,9 +47,9 @@ const Dashboard = () => {
   return (
     <div className="flex flex-col gap-6">
       <h2 className="text-3xl font-bold text-white mb-4">Dashboard Overview</h2>
-      
+
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        
+
         {/* Card 1: Projects */}
         <div className="bg-[#1a1a1a] p-6 rounded-xl border border-gray-800 shadow-lg">
           <h3 className="text-gray-400 text-sm font-medium">Total Projects</h3>

@@ -10,7 +10,7 @@ const Projects = () => {
     const fetchProjects = async () => {
       try {
         const { data } = await axios.get(
-          "http://localhost:4000/api/v1/project/getall",
+          "https://portfolio-fullstack-nhdz.onrender.com/api/v1/project/getall",
           { withCredentials: true }
         );
         setProjects(data.projects);
@@ -24,9 +24,9 @@ const Projects = () => {
   return (
     <section id="projects" className="min-h-screen py-20 relative">
       <div className="max-w-7xl mx-auto px-6">
-        
+
         <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-transparent">
-            Featured Projects
+          Featured Projects
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
@@ -48,8 +48,8 @@ const Projects = () => {
                   className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex justify-center items-center gap-4 backdrop-blur-sm">
-                    <a href={element.projectLink} target="_blank" className="p-3 bg-white/90 rounded-full text-black hover:bg-blue-500 hover:text-white transition duration-300"><ExternalLink size={20} /></a>
-                    <a href={element.gitRepoLink} target="_blank" className="p-3 bg-white/90 rounded-full text-black hover:bg-gray-800 hover:text-white transition duration-300"><Github size={20} /></a>
+                  <a href={element.projectLink} target="_blank" className="p-3 bg-white/90 rounded-full text-black hover:bg-blue-500 hover:text-white transition duration-300"><ExternalLink size={20} /></a>
+                  <a href={element.gitRepoLink} target="_blank" className="p-3 bg-white/90 rounded-full text-black hover:bg-gray-800 hover:text-white transition duration-300"><Github size={20} /></a>
                 </div>
               </div>
 
@@ -57,15 +57,15 @@ const Projects = () => {
               <div className="p-6">
                 <h3 className="text-xl font-bold text-white mb-2 group-hover:text-green-400 transition-colors duration-500">{element.title}</h3>
                 <div className="flex flex-wrap gap-2 mb-4">
-                    {/* Technologies Badges (Glassy) */}
-                    {element.technologies.split(",").map((tech, index) => (
-                        <span key={index} className="text-xs bg-blue-500/20 text-blue-300 px-2 py-1 rounded-md border border-blue-500/30 backdrop-blur-md">
-                            {tech.trim()}
-                        </span>
-                    ))}
+                  {/* Technologies Badges (Glassy) */}
+                  {element.technologies.split(",").map((tech, index) => (
+                    <span key={index} className="text-xs bg-blue-500/20 text-blue-300 px-2 py-1 rounded-md border border-blue-500/30 backdrop-blur-md">
+                      {tech.trim()}
+                    </span>
+                  ))}
                 </div>
                 <p className="text-gray-400 text-sm line-clamp-3 leading-relaxed group-hover:text-gray-300 transition-colors duration-500">
-                    {element.description}
+                  {element.description}
                 </p>
               </div>
             </motion.div>

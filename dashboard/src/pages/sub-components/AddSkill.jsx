@@ -28,7 +28,7 @@ const AddSkill = () => {
     try {
       // Backend Security hata di hai, isliye credentials ki zaroorat nahi
       const { data } = await axios.post(
-        "http://localhost:4000/api/v1/softwareapplication/add",
+        "https://portfolio-fullstack-nhdz.onrender.com/api/v1/softwareapplication/add",
         formData,
         {
           headers: { "Content-Type": "multipart/form-data" },
@@ -49,7 +49,7 @@ const AddSkill = () => {
       <div className="bg-[#1a1a1a] p-8 rounded-xl w-full max-w-md border border-gray-800">
         <h2 className="text-2xl font-bold text-white mb-6">Add New Skill</h2>
         <form onSubmit={handleAddSkill} className="flex flex-col gap-4">
-          
+
           <input
             type="text"
             placeholder="Skill Name (e.g. React.js)"
