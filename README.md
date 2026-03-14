@@ -82,7 +82,3 @@ If you'd like to connect or collaborate:
 
 If you like this project, please consider giving it a **star ⭐** on GitHub.  
 It helps others discover the project.
-
----
-
-## 📸 Portfolio Preview
