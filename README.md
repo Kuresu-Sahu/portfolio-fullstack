@@ -68,4 +68,21 @@ I enjoy building projects that solve real-world problems and continuously improv
 
 ---
 
-## 📂 Project Structure
+## 📬 Contact Me
+
+If you'd like to connect or collaborate:
+
+📧 Email: kuresusahu18@gmail.com  
+💼 LinkedIn: https://www.linkedin.com/in/kuresu-sahu/  
+🐙 GitHub: https://github.com/Kuresu-Sahu  
+
+---
+
+## ⭐ Support
+
+If you like this project, please consider giving it a **star ⭐** on GitHub.  
+It helps others discover the project.
+
+---
+
+## 📸 Portfolio Preview
