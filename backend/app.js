@@ -24,7 +24,7 @@ app.use(
     origin: [
       "http://localhost:5173",
       "http://localhost:5174",
-      "https://portfolio-fullstack-gold.vercel.app",
+      "https://kuresusahu.vercel.app",
       "https://portfolio-fullstack-ktm5.vercel.app"
     ],
     methods: ["GET", "POST", "PUT", "DELETE"],
