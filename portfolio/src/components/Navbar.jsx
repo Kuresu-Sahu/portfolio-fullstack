@@ -20,7 +20,7 @@ const Navbar = () => {
           {/* Logo with Neon Glow */}
           <div className="flex-shrink-0 cursor-pointer">
             <h1 className="text-2xl font-bold text-white drop-shadow-[0_0_10px_rgba(59,130,246,0.8)]">
-              <span className="text-blue-500">CODER KURESU</span>
+              <span className="text-blue-500">KURESU SAHU</span>
             </h1>
           </div>
 
