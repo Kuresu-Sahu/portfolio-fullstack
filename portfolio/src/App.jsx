@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
+import About from "./components/About";
 import Skills from "./components/Skills";
 import Timeline from "./components/Timeline";
 import Projects from "./components/Projects";
@@ -10,21 +11,22 @@ import MouseFollower from "./components/MouseFollower";
 
 const App = () => {
   return (
-    // 🟢 FIX 1: 'cursor-none' hata diya. Ab mouse hamesha dikhega.
-    // 🟢 FIX 2: 'bg-[#050505]' yahi rahega, baaki sab transparent honge.
-    <div className="font-sans text-white bg-[#050505] min-h-screen relative overflow-hidden">
+    <div className="font-sans text-slate-900 dark:text-slate-100 bg-slate-50 dark:bg-[#050508] min-h-screen relative overflow-x-hidden selection:bg-indigo-500/20 selection:text-indigo-700 dark:selection:bg-indigo-500/30 dark:selection:text-indigo-200 transition-colors duration-300">
       
-      {/* 🖱️ Cursor Animation (Background Layer - Z Index 0) */}
+      {/* Ambient Mouse Spotlight */}
       <MouseFollower />
 
-      {/* 🟢 Main Content (Z-Index 10 taaki ye glow ke upar rahe par transparent ho) */}
+      {/* Main Page Content */}
       <div className="relative z-10">
         <Navbar />
-        <Hero />
-        <Skills />
-        <Projects />
-        <Timeline />
-        <Contact />
+        <main>
+          <Hero />
+          <About />
+          <Skills />
+          <Projects />
+          <Timeline />
+          <Contact />
+        </main>
         <Footer />
       </div>
 
